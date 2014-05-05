@@ -1,4 +1,9 @@
 gas-rest-ember
 ==============
 
-GAS-REST Service Example App on Ember.js + Google Apps Script
+Example application on:
+- [Ember.js](http://emberjs.com/) on frontend
+- [Google Apps Script](https://developers.google.com/apps-script/) on backend
+- [GAS-REST](http://rest.daspot.ru/) service in the middle
+
+Hosted on [Google Drive](http://dab00.gweb.io/gas-rest/)
