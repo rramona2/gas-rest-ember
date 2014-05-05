@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+  <title>GAS-REST-Ember - GAS-REST Service Example App</title>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">  
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <script type="text/x-handlebars">
+    <div class="site-wrapper-inner">
+      <div class="cover-container">
+        <div class="masthead clearfix">
+          <div class="inner">
+            <h3 class="masthead-brand">GAS-REST Example App</h3>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="https://github.com/dab00/gas-rest-ember" target="_blank">GitHub</a></li>
+              <li><a href="https://docs.google.com/spreadsheets/d/1rDit6RtL6ohww86sHsE8d66DjncQmKe25dqU9jz0F90/edit" target="_blank">Datasource</a></li>
+            </ul>
+          </div>
+        </div>        
+          <ul>
+            <li class="list-unstyled"><a href="http://emberjs.com/" target="_blank">Ember.js</a> on frontend</li>
+            <li class="list-unstyled"><a href="https://developers.google.com/apps-script/" target="_blank">Google Apps Script</a> on backend</li>
+            <li class="list-unstyled"><a href="http://rest.daspot.ru/" target="_blank">GAS-REST</a> service in the middle</li>
+          </ul>          
+          {{outlet}}        
+        <div class="mastfoot">
+          <div class="inner">
+            <p>© <a href="http://www.daspot.ru">Anatoly Demidovich</a></p>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </script>
+
+  <script type="text/x-handlebars" id="cats">    
+    <table class="table">
+      <thead>        
+        <tr>          
+          <td>#</td>
+          {{partial "input"}}
+          <td><button class="btn btn-default" title="Press to create new" {{action 'create'}}>✔</button></td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each itemController="cat"}}
+          <tr title="Double click to edit" {{action "edit" on="doubleClick"}}>
+            <td>{{id}}</td>
+            {{#if isEditing}}
+              {{partial "input"}}
+              <td><button class="btn btn-default" title="Press to update" {{action "update"}}>✔</button></td>              
+            {{else}}
+              <td>{{name}}</td>
+              <td>{{age}}</td>
+              <td><button class="btn btn-default" title="Press to remove" {{action "remove"}}>✖</button></td>
+            {{/if}}
+          </tr>
+        {{/each}}        
+      </tbody>
+    </table>
+  </script>
+
+  <script type="text/x-handlebars" id="input">
+    <td>{{input class="form-control" type="text" value=name placeholder="Name"}}</td>
+    <td>{{input class="form-control" type="number" value=age max=30 min=0 placeholder="Age"}}</td>
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.5.0/ember.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.7/ember-data.min.js"></script>  
+
+  <script src="js/app.js"></script>  
+</body>
+</html>
